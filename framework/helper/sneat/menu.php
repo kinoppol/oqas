@@ -3,6 +3,7 @@
 function gen_submenu($arr=array(),$expanded=false){ 
     global $controller;
     global $function;   
+    global $p;
     $ret='';
     $sexp='';
     $exp='';
@@ -37,7 +38,7 @@ function gen_submenu($arr=array(),$expanded=false){
                 $sexp='';
                     //print $current_function;
                     //print 'U-'.$row['url'].'<br>';
-                if(mb_substr($row['url'],0,mb_strlen(site_url($current_function)))==site_url($current_function)){
+                if(mb_substr($row['url'],0,mb_strlen(site_url($p)))==site_url($p)){
                     $ssactive=' active';
                     $sexp=' open';
                 }

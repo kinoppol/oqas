@@ -13,13 +13,13 @@ foreach($root_indicators as $ind){
         //print_r($child_ind);
         foreach($child_ind as $c){
             $item[$c['id']]=array(
-                'label'=>$c['subject'],
-                'url'=>site_url('oqas/show_media/ind/'.$c['id']),
+                'label'=>$c['title'],
+                'url'=>site_url('qa/evidence/ind/'.$c['id']),
             );
         }
     }
         $ind_menu[$ind['id']]=array(
-            'label'=>$ind['subject'],
+            'label'=>$ind['title'],
             'bullet'=>'tf-icons bx bx-check-square',
             'url'=>site_url('#')
             );
@@ -73,4 +73,5 @@ $menu['หัวข้อ']=array(
     )
 );
 */
-print gen_menu($menu);
+helper('oqas');
+print gen_oqas_menu($menu);
