@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2025 at 11:56 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Jan 28, 2025 at 03:29 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `evidence`
+--
+
+CREATE TABLE `evidence` (
+  `id` int(11) NOT NULL COMMENT 'รหัสหลักฐาน',
+  `indicator_id` int(11) NOT NULL COMMENT 'รหัสตัวชี้วัด',
+  `type` enum('text','link') NOT NULL DEFAULT 'text' COMMENT 'ชนิดหลักฐาน',
+  `detail` text NOT NULL COMMENT 'รายละเอียดหลักฐาน'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `indicator`
 --
 
@@ -31,21 +44,21 @@ CREATE TABLE `indicator` (
   `id` int(11) NOT NULL COMMENT 'รหัสตัวชี้วัด',
   `project_id` int(11) NOT NULL COMMENT 'รหัสการประเมิน',
   `parent_id` int(11) NOT NULL DEFAULT 0 COMMENT 'ตัวชี้วัดหลัก 0 หมายถึงเป็นตัวชี้วัดสูงสุด',
-  `subject` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
-  `media_type` enum('topic','text','pdf','link') NOT NULL DEFAULT 'topic' COMMENT 'ประเภทข้อมูล',
+  `title` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
+  `subject` text NOT NULL COMMENT 'คำอธิบายหัวข้อ',
   `detail` text NOT NULL COMMENT 'รายละเอียด'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `indicator`
 --
 
-INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `subject`, `media_type`, `detail`) VALUES
-(1, 1, 0, 'มาตรฐานที่ 1', 'topic', ''),
-(2, 1, 0, 'มาตรฐานที่ 2', 'topic', ''),
-(3, 1, 0, 'มาตรฐานที่ 3', 'topic', ''),
-(4, 1, 1, 'ตัวชี้วัดที่ 1.1', 'topic', ''),
-(5, 1, 1, 'ตัวชี้วัดที่ 1.2', 'topic', '');
+INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `title`, `subject`, `detail`) VALUES
+(1, 1, 0, 'มาตรฐานที่ 1', 'คุณภาพของผู้เรียน', ''),
+(2, 1, 0, 'มาตรฐานที่ 2', 'กระบวนการบริหารและการจัดการ', ''),
+(3, 1, 0, 'มาตรฐานที่ 3', 'กระบวนการจัดการเรียนการสอน ที่เน้นผู้เรียนเป็นสําคัญ', ''),
+(4, 1, 1, 'ตัวชี้วัดที่ 1.1', 'ผู้เรียนมีสมรรถนะตามหลักสูตรสถานศึกษา', ''),
+(5, 1, 1, 'ตัวชี้วัดที่ 1.2', 'ผู้เรียนมีคุณลักษณะที่พึงประสงค์ตามหลักสูตรสถานศึกษา', '');
 
 -- --------------------------------------------------------
 
@@ -56,7 +69,7 @@ INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `subject`, `media_type
 CREATE TABLE `org` (
   `id` int(11) NOT NULL COMMENT 'รหัสหน่วยงาน',
   `name` varchar(1000) NOT NULL COMMENT 'ชื่อหน่วยงาน'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `org`
@@ -76,7 +89,7 @@ CREATE TABLE `project` (
   `org_id` int(11) NOT NULL COMMENT 'รหัสหน่วยงาน',
   `subject` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
   `visible` enum('public','private') NOT NULL DEFAULT 'private' COMMENT 'การเผยแพร่'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `project`
@@ -94,7 +107,7 @@ INSERT INTO `project` (`id`, `org_id`, `subject`, `visible`) VALUES
 CREATE TABLE `system_config` (
   `id` varchar(32) NOT NULL,
   `value` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `system_config`
@@ -119,7 +132,7 @@ CREATE TABLE `user_data` (
   `user_type_id` int(11) NOT NULL DEFAULT 2,
   `picture` varchar(100) DEFAULT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_data`
@@ -139,7 +152,7 @@ CREATE TABLE `user_type` (
   `id` int(11) NOT NULL,
   `type_name` varchar(32) NOT NULL,
   `active_menu` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_type`
@@ -155,10 +168,19 @@ INSERT INTO `user_type` (`id`, `type_name`, `active_menu`) VALUES
 --
 
 --
+-- Indexes for table `evidence`
+--
+ALTER TABLE `evidence`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indicator_id` (`indicator_id`);
+
+--
 -- Indexes for table `indicator`
 --
 ALTER TABLE `indicator`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `project_id` (`project_id`),
+  ADD KEY `parent_id` (`parent_id`);
 
 --
 -- Indexes for table `org`
@@ -170,7 +192,8 @@ ALTER TABLE `org`
 -- Indexes for table `project`
 --
 ALTER TABLE `project`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `org_id` (`org_id`);
 
 --
 -- Indexes for table `system_config`
@@ -195,6 +218,12 @@ ALTER TABLE `user_type`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `evidence`
+--
+ALTER TABLE `evidence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสหลักฐาน';
 
 --
 -- AUTO_INCREMENT for table `indicator`
@@ -225,6 +254,28 @@ ALTER TABLE `user_data`
 --
 ALTER TABLE `user_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `evidence`
+--
+ALTER TABLE `evidence`
+  ADD CONSTRAINT `evidence_ibfk_1` FOREIGN KEY (`indicator_id`) REFERENCES `indicator` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `indicator`
+--
+ALTER TABLE `indicator`
+  ADD CONSTRAINT `indicator_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `project`
+--
+ALTER TABLE `project`
+  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`org_id`) REFERENCES `org` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
