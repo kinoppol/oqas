@@ -121,20 +121,20 @@ class management{
         if(!int($user_id))
         {
             $_SESSION['response']['alert']['message'] = 'เกิดช้อผิดพลาดบนเซิฟเวอร์ กรุณาลองใหม่อีกครั้งในภายหลัง';
-            return redirect(site_url('management/add_user_form'));
+            //return redirect(site_url('management/add_user_form'));
         }
 
         
         if($_FILES["fileToUpload"]['size'] > 0){
             if(!$model->update_avatar($user_id,$_FILES["fileToUpload"])){
                 $_SESSION['response']['alert']['message'] = $model->error();
-                return redirect(site_url('management/edit_user_form/id/'.$user_id));
+                //eturn redirect(site_url('management/edit_user_form/id/'.$user_id));
             }
         }
         
         $_SESSION['response']['alert']['type'] = 'success';
         $_SESSION['response']['alert']['message'] = 'บันทึกข้อมูลเสร็จสิ้น!';
-        return redirect(site_url('management/edit_user_form/id/'.$user_id));
+        //return redirect(site_url('management/edit_user_form/id/'.$user_id));
     }
 
 

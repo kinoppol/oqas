@@ -131,6 +131,7 @@ foreach($active_menu as $m){
 
           <div class="menu-inner-shadow"></div>
           <ul class="menu-inner py-1">
+            &nbsp;&nbsp;วิทยาลัยอาชีวศึกษาร้อยเอ็ด
   <?php
     print $menu;
   ?>
@@ -151,9 +152,11 @@ foreach($active_menu as $m){
                 <i class="bx bx-menu bx-sm"></i>
               </a>
             </div>
-
+            
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            การประกันคุณภาพภายนอก พ.ศ.2567 ด้านการอาชีวศึกษาศึกษา
               <!-- Search -->
+              <!--
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
@@ -164,7 +167,7 @@ foreach($active_menu as $m){
                     aria-label="Search..."
                   />
                 </div>
-              </div>
+              </div> -->
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">

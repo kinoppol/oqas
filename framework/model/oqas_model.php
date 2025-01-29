@@ -34,7 +34,7 @@ class oqas_model{
       return $result;
     }
     
-    function get_indicator($data=array()){
+    function get_indicators($data=array()){
        
         $sql='select * from indicator';
         if(count($data)){
@@ -43,10 +43,27 @@ class oqas_model{
         //print $sql;
         $result=$this->db->query($sql);
 
-            $data=$result->fetch_assoc();
-            return $data;
+        $res=array();
+        while($data=$result->fetch_assoc()){
+          $res[]=$data;
+        }
+        return $res;
         
     }
+
+    function insert_indicator($data=array()){
+      $sql='insert into indicator set '.arr2set($data);
+      //print $sql;
+      //exit();
+      $result=$this->db->query($sql);
+      return $this->db->insert_id;
+  }
+  function update_indicator($data=array(),$where=array()){
+    $sql='update indicator set '.arr2set($data).' where '.arr2and($where);
+    $result=$this->db->query($sql);
+    return $result;
+  }
+
     function get_root_indicators($project_id){
         $sql='select * from indicator';
           $sql.=' where project_id="'.$project_id.'" and parent_id="0"';
