@@ -20,7 +20,7 @@ class mysql_helper {
     }
 
 
-    function from(...$tables) {
+    function from($tables) {
         $this->sql .= ' FROM ';
         foreach ($tables as $value) {
             $this->sql .= $value.', ';
