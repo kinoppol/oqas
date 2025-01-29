@@ -48,7 +48,7 @@ function arr2set($data=array()){
     return $ret;
 }
 
-function var2arr(...$var) {
+function var2arr($var) {
     foreach ($var as $key => $value) {
         if(!is_array($value)) $var[$key] = array($value);
     }
