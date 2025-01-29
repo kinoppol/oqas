@@ -30,7 +30,7 @@ foreach($active_menu as $m){
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?php print site_url('template/Sneat/sneat-bootstrap-html-admin-template/',true); ?>assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./images/rvc_logo.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,12 +52,16 @@ foreach($active_menu as $m){
     <link rel="stylesheet" href="<?php print site_url('template/Sneat/sneat-bootstrap-html-admin-template/',true); ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- Page CSS -->
-    <link href="./images/ric_logo.png" rel="cvm-2023-icon"> 
-  <link href="./images/ric_logo.png" rel="icon">
+    <link href="./images/rvc_logo.png" rel="rvc-icon"> 
+  <link href="./images/rvc_logo.png" rel="icon">
     <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>
     <style>
         button, a, li, p, h1, body {
         font-family: "Kanit", sans-serif;
+        }
+        .dropdown-menu {
+          position: relative; /* or absolute */
+          z-index: 9999; /* set a higher z-index value */
         }
     </style>
     <!-- Helpers -->
@@ -115,7 +119,7 @@ foreach($active_menu as $m){
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2"><img src="./images/ric_logo.png" width="80" alt=""> <?php 
+              <span class="app-brand-text demo menu-text fw-bolder ms-2"><img src="./images/rvc_logo.png" width="60" alt=""> <?php 
               //print $system['systemName']; 
               ?></span>
             </a>

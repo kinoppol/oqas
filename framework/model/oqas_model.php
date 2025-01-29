@@ -1,11 +1,11 @@
 <?php
 
-class oqas{
+class oqas_model{
     private $db;
     function __construct($db_ref){
         $this->db=$db_ref;
     }
-    function get_project($data=array()){
+    function get_projects($data=array()){
        
         $sql='select * from project';
         if(count($data)){
@@ -15,10 +15,25 @@ class oqas{
         $result=$this->db->query($sql);
 
             $res=array();
-            $data=$result->fetch_assoc();
-            return $data;
+            while($data=$result->fetch_assoc()){
+              $res[]=$data;
+            }
+            return $res;
         
     }
+
+
+    function insert_project($data=array()){
+        $sql='insert into project set '.arr2set($data);
+        $result=$this->db->query($sql);
+        return $this->db->insert_id;
+    }
+    function update_project($data=array(),$where=array()){
+      $sql='update project set '.arr2set($data).' where '.arr2and($where);
+      $result=$this->db->query($sql);
+      return $result;
+    }
+    
     function get_indicator($data=array()){
        
         $sql='select * from indicator';

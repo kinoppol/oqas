@@ -10,7 +10,8 @@ $controller_guest_allowed=array(
     'login',
     'register',
     'showcase',
-    'showcourses'
+    'showcourses',
+    'qa'
 );
 
 $controller=null;

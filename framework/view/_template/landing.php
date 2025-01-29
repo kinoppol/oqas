@@ -3,18 +3,18 @@ $template_path='template/courses/';
 
 ?>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="th">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>RIC</title>
+    <title>RVC</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <!--<link rel="shortcut icon" type="image/x-icon" href="<?php print site_url($template_path,true); ?>assets/img/favicon.ico">-->
     
-  <link href="./images/ric_logo.png" rel="cvm-2023-icon"> 
-  <link href="./images/ric_logo.png" rel="icon">
+  <link href="./images/rvc_logo.png" rel="cvm-2023-icon"> 
+  <link href="./images/rvc_logo.png" rel="icon">
     <link href='https://fonts.googleapis.com/css?family=Kanit:400,300&subset=thai,latin' rel='stylesheet' type='text/css'>	
 
     <!-- CSS here -->
@@ -46,7 +46,7 @@ $template_path='template/courses/';
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="./images/ric_logo.png" alt="">
+                    <img src="./images/rvc_logo.png" alt="">
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@ $template_path='template/courses/';
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo" align="center">
-                                    <a href="https://cvm.vec.go.th/" target="_blank"><img src="./images/ric_logo.png" width="60" alt=""> <br>คลังปัญญาธุรกิจค้าปลีก</a>
+                                    <a href="http://www.rvc.ac.th/" target="_blank"><img src="./images/rvc_logo.png" width="60" alt=""> <br>ประกันคุณภาพการศึกษา</a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -104,9 +104,9 @@ $template_path='template/courses/';
                         <div class="row">
                             <div class="col-xl-6 col-lg-7 col-md-12">
                                 <div class="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">คลังปัญญา<br>ธุรกิจกิจค้าปลีก</h1>
-                                    <p data-animation="fadeInLeft" data-delay="0.4s">Retail business intelligence center.</p>
-                                    <a href="?p=register" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">ลงทะเบียนเรียนฟรี</a>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">การประเมิน<br>คุณภาพการศึกษา</h1>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s">Educational Quality Assurance</p>
+                                    <a href="?p=qa/evidence/" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">ชมการนำเสนอ</a>
                                 </div>
                             </div>
                         </div>
@@ -114,188 +114,6 @@ $template_path='template/courses/';
                 </div>
             </div>
         </section>
-        <!--? top subjects Area Start -->
-        <div class="topic-area section-padding40">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h2>กลุ่มเป้าหมาย</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="./images/student.jpg" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">นักเรียนนักศึกษา</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                            <img src="./images/teacher.jpg" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">ครูผู้สอน</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                            <img src="./images/retail.jpg" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">สถานประกอบการ</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                            <img src="./images/people.jpg" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">ประชาชนทั่วไป</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                  
-                </div>
-            </div>
-        </div>
-        <!-- top subjects End -->
-        <!-- ? services-area -->
-        <!-- Courses area start -->
-        <div class="courses-area section-padding40 fix">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h2>บริการของเรา</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="courses-actives">
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="./images/data_center.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">ศูนย์ข้อมูล</a></h3>
-                                <p>
-                                - แนะนำ CVM <br>
-                                - ข้อมูลสถานศึกษา  <br>
-                                - ข้อมูลสถานประกอบการ  <br>
-                                - ข้อมูลนักเรียน  <br>
-                                - ข้อมูลครูผู้สอน  <br>
-                                - ข้อมูลการเรียนระบบทวิภาคี  <br>
-                                - ข้อมูลตลาดแรงงาน  <br>
-                                - ข้อมูลข่าวสาร  <br>
-                                - ข้อมูลการแนะแนว  <br>
-                                </p>
-                                <a href="#" class="border-btn border-btn2">ดูข้อมูลเพิ่มเติม</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                            <a href="#"><img src="./images/education_center.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">ศูนย์การศึกษา</a></h3>
-                                <p>
-                                - หลักสูตร <br>
-                                - หลักสูตรระยะสั้น <br>
-                                - ความรู้ด้านธุรกิจค้าปลีก <br>
-                                - ต้นแบบผู้ประสบความสำเร็จ <br>
-                                - สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)  <br>
-
-                                </p>
-                                <a href="#" class="border-btn border-btn2">ดูข้อมูลเพิ่มเติม</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                            <a href="#"><img src="./images/modern_trade.jpg" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">ศูนย์แหล่งเรียนรู้</a></h3>
-                                <p>
-                                - ห้องเรียนออนไลน์ <br>
-                                - สื่อการสอน <br>
-                                - นวัตกรรม <br>
-                                - งานวิจัย/บทความทางวิชาการ <br>
-                                </p>
-                                <a href="#" class="border-btn border-btn2">ดูข้อมูลเพิ่มเติม</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                            <a href="#"><img src="./images/test_center.png" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">ศูนย์ทดสอบ</a></h3>
-                                <p>
-                                - ทดสอบสมรรถนะมาตรฐานวิชาชีพ <br>
-                                </p>
-                                <a href="#" class="border-btn border-btn2">ดูข้อมูลเพิ่มเติม</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                     <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                            <a href="#"><img src="./images/vocational_center.jpg" alt=""></a>
-                            </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">ศูนย์บริการวิชาการวิชาชีพ</a></h3>
-                                <p>
-                                -  การบริการวิชาการ <br>
-                                -  การบริการวิชาชีพ
-
-                                </p>
-                                <a href="#" class="border-btn border-btn2">ดูข้อมูลเพิ่มเติม</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Single -->
-                </div>
-            </div>
-        </div>
-        <!-- Courses area End -->
-    </main>
     <footer>
      <div class="footer-wrappper footer-bg">
         <!-- Footer Start-->
@@ -307,11 +125,11 @@ $template_path='template/courses/';
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo mb-25">
-                                    <a href="index.html"><img src="./images/ric_logo.png" width="60" alt=""></a>
+                                    <a href="index.html"><img src="./images/rvc_logo.png" width="60" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>คลังปัญญาธุรกิจค้าปลีก <br> Retail business intelligence.</p>
+                                        <p>การประเมินคุณภาพการศึกษา <br> Educational Quality Assurance.</p>
                                     </div>
                                 </div>
                                 <!-- social -->
@@ -323,6 +141,7 @@ $template_path='template/courses/';
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
@@ -349,7 +168,7 @@ $template_path='template/courses/';
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -361,7 +180,7 @@ $template_path='template/courses/';
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  สงวนลิขสิทธิ์ &copy;<script>document.write(new Date().getFullYear()+543);</script> <a href="https://cvm.vec.go.th/" target="_blank">ศูนย์บริหารเครือข่ายการผลิตและพัฒนากำลังคนอาชีวศึกษา (CVM)</a> | แม่แบบโดย <i class="fa fa-heart" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                  สงวนลิขสิทธิ์ &copy;<script>document.write(new Date().getFullYear()+543);</script> <a href="http://www.vvc.go.th/" target="_blank">ศูนย์ข้อมูลสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด</a> | แม่แบบโดย <i class="fa fa-heart" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                               </div>
                           </div>

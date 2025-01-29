@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2025 at 03:29 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Jan 29, 2025 at 12:08 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `evidence` (
   `indicator_id` int(11) NOT NULL COMMENT 'รหัสตัวชี้วัด',
   `type` enum('text','link') NOT NULL DEFAULT 'text' COMMENT 'ชนิดหลักฐาน',
   `detail` text NOT NULL COMMENT 'รายละเอียดหลักฐาน'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `indicator` (
   `title` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
   `subject` text NOT NULL COMMENT 'คำอธิบายหัวข้อ',
   `detail` text NOT NULL COMMENT 'รายละเอียด'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `indicator`
@@ -69,7 +69,7 @@ INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `title`, `subject`, `d
 CREATE TABLE `org` (
   `id` int(11) NOT NULL COMMENT 'รหัสหน่วยงาน',
   `name` varchar(1000) NOT NULL COMMENT 'ชื่อหน่วยงาน'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `org`
@@ -88,15 +88,16 @@ CREATE TABLE `project` (
   `id` int(11) NOT NULL COMMENT 'รหัสการประเมิน',
   `org_id` int(11) NOT NULL COMMENT 'รหัสหน่วยงาน',
   `subject` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
+  `due_date` date NOT NULL DEFAULT current_timestamp(),
   `visible` enum('public','private') NOT NULL DEFAULT 'private' COMMENT 'การเผยแพร่'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `project`
 --
 
-INSERT INTO `project` (`id`, `org_id`, `subject`, `visible`) VALUES
-(1, 1, 'การประกันคุณภาพภายนอก', 'public');
+INSERT INTO `project` (`id`, `org_id`, `subject`, `due_date`, `visible`) VALUES
+(1, 1, 'การประกันคุณภาพภายนอก 2567', '2025-01-30', 'public');
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,7 @@ INSERT INTO `project` (`id`, `org_id`, `subject`, `visible`) VALUES
 CREATE TABLE `system_config` (
   `id` varchar(32) NOT NULL,
   `value` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `system_config`
@@ -132,7 +133,7 @@ CREATE TABLE `user_data` (
   `user_type_id` int(11) NOT NULL DEFAULT 2,
   `picture` varchar(100) DEFAULT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_data`
@@ -152,16 +153,16 @@ CREATE TABLE `user_type` (
   `id` int(11) NOT NULL,
   `type_name` varchar(32) NOT NULL,
   `active_menu` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_type`
 --
 
 INSERT INTO `user_type` (`id`, `type_name`, `active_menu`) VALUES
-(1, 'developer', 'oqas,developer,admin,\nuser_menu'),
-(2, 'admin', 'oqas,developer,admin\nuser_menu'),
-(3, 'user', 'oqas,\nuser_menu');
+(1, 'developer', 'qa,oqas,developer,admin,user_menu'),
+(2, 'admin', 'qa,oqas,adminuser_menu'),
+(3, 'user', 'qa,oqas,user_menu');
 
 --
 -- Indexes for dumped tables
