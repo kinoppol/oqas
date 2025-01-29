@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2025 at 12:08 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Jan 29, 2025 at 05:07 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `evidence` (
   `indicator_id` int(11) NOT NULL COMMENT 'รหัสตัวชี้วัด',
   `type` enum('text','link') NOT NULL DEFAULT 'text' COMMENT 'ชนิดหลักฐาน',
   `detail` text NOT NULL COMMENT 'รายละเอียดหลักฐาน'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -46,19 +46,27 @@ CREATE TABLE `indicator` (
   `parent_id` int(11) NOT NULL DEFAULT 0 COMMENT 'ตัวชี้วัดหลัก 0 หมายถึงเป็นตัวชี้วัดสูงสุด',
   `title` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
   `subject` text NOT NULL COMMENT 'คำอธิบายหัวข้อ',
-  `detail` text NOT NULL COMMENT 'รายละเอียด'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `detail` text DEFAULT NULL COMMENT 'รายละเอียด'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `indicator`
 --
 
 INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `title`, `subject`, `detail`) VALUES
-(1, 1, 0, 'มาตรฐานที่ 1', 'คุณภาพของผู้เรียน', ''),
-(2, 1, 0, 'มาตรฐานที่ 2', 'กระบวนการบริหารและการจัดการ', ''),
-(3, 1, 0, 'มาตรฐานที่ 3', 'กระบวนการจัดการเรียนการสอน ที่เน้นผู้เรียนเป็นสําคัญ', ''),
-(4, 1, 1, 'ตัวชี้วัดที่ 1.1', 'ผู้เรียนมีสมรรถนะตามหลักสูตรสถานศึกษา', ''),
-(5, 1, 1, 'ตัวชี้วัดที่ 1.2', 'ผู้เรียนมีคุณลักษณะที่พึงประสงค์ตามหลักสูตรสถานศึกษา', '');
+(1, 1, 0, 'มาตรฐานที่ 1', 'คุณลักษณะของผู้สําเร็จการศึกษาอาชีวศึกษาที่พึงประสงค์', ''),
+(2, 1, 0, 'มาตรฐานที่ 2', 'การจัดการอาชีวศึกษา', ''),
+(3, 1, 0, 'มาตรฐานที่ 3', 'การสร้างสังคมแห่งการเรียนรู้', ''),
+(4, 1, 1, 'ตัวชี้วัดที่ 1.1', 'ความรู้ของผู้สําเร็จการศึกษาอาชีวศึกษา', ''),
+(5, 1, 1, 'ตัวชี้วัดที่ 1.2', 'ทักษะและการนําไปประยุกต์ใช้ของผู้สําเร็จการศึกษาอาชีวศึกษา', ''),
+(6, 1, 1, 'ตัวชี้วัดที่ 1.3', 'คุณธรรม จริยธรรม และคุณลักษณะที่พึงประสงค์ ของผู้สําเร็จการศึกษาอาชีวศึกษา', NULL),
+(7, 1, 1, 'ตัวชี้วัดที่ 1.4', 'ผลสัมฤทธิ์ ของผู้สําเร็จการศึกษาอาชีวศึกษา', NULL),
+(8, 1, 2, 'ตัวชี้วัดที่ 2.1', 'หลักสูตรอาชีวศึกษา', NULL),
+(9, 1, 2, 'ตัวชี้วัดที่ 2.2', 'การจัดการเรียนการสอนอาชีวศึกษา', NULL),
+(10, 1, 2, 'ตัวชี้วัดที่ 2.3', 'การบริหารจัดการสถานศึกษา', NULL),
+(11, 1, 2, 'ตัวชี้วัดที่ 2.4', 'การนํานโยบายสู่การปฏิบัติ', NULL),
+(12, 1, 3, 'ตัวชี้วัดที่ 3.1', 'ความร่วมมือในการสร้างสังคมแห่งการเรียนรู้', NULL),
+(13, 1, 3, 'ตัวชี้วัดที่ 3.2', 'นวัตกรรม สิ่งประดิษฐ์ งานสร้างสรรค์ และงานวิจัย', NULL);
 
 -- --------------------------------------------------------
 
@@ -69,7 +77,7 @@ INSERT INTO `indicator` (`id`, `project_id`, `parent_id`, `title`, `subject`, `d
 CREATE TABLE `org` (
   `id` int(11) NOT NULL COMMENT 'รหัสหน่วยงาน',
   `name` varchar(1000) NOT NULL COMMENT 'ชื่อหน่วยงาน'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `org`
@@ -90,7 +98,7 @@ CREATE TABLE `project` (
   `subject` varchar(1000) NOT NULL COMMENT 'หัวข้อ',
   `due_date` date NOT NULL DEFAULT current_timestamp(),
   `visible` enum('public','private') NOT NULL DEFAULT 'private' COMMENT 'การเผยแพร่'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `project`
@@ -108,7 +116,7 @@ INSERT INTO `project` (`id`, `org_id`, `subject`, `due_date`, `visible`) VALUES
 CREATE TABLE `system_config` (
   `id` varchar(32) NOT NULL,
   `value` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `system_config`
@@ -133,7 +141,7 @@ CREATE TABLE `user_data` (
   `user_type_id` int(11) NOT NULL DEFAULT 2,
   `picture` varchar(100) DEFAULT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_data`
@@ -141,6 +149,7 @@ CREATE TABLE `user_data` (
 
 INSERT INTO `user_data` (`id`, `username`, `password`, `email`, `name`, `surname`, `user_type_id`, `picture`, `active`) VALUES
 (1, 'dev', '81dc9bdb52d04dc20036dbd8313ed055', 'noppol.ins@gmail.com', 'นพพล', 'อินศร', 1, 'ZGV2.jpg', '1'),
+(2, 'it', '81dc9bdb52d04dc20036dbd8313ed055', 'it@rvc.ac.th', 'งานศูนย์ข้อมูลสารสนเทศ', 'วิทยาลัยอาชีวศึกษาร้อยเอ็ด', 2, NULL, '1'),
 (3, 'noppol', '8689391a8b93cd2d55ccf3f436eef4e2', 'noppol@rvc.ac.th', '', '', 2, NULL, '1');
 
 -- --------------------------------------------------------
@@ -153,7 +162,7 @@ CREATE TABLE `user_type` (
   `id` int(11) NOT NULL,
   `type_name` varchar(32) NOT NULL,
   `active_menu` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_type`
@@ -230,7 +239,7 @@ ALTER TABLE `evidence`
 -- AUTO_INCREMENT for table `indicator`
 --
 ALTER TABLE `indicator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสตัวชี้วัด', AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'รหัสตัวชี้วัด', AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `org`
