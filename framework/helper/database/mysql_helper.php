@@ -92,7 +92,7 @@ class mysql_helper {
     }
 
     function esc($string,$db=null) {
-        $db = ($db ?? $this->db);
+        $db = $this->db;
         if(empty($db)){
             return $string;
         }
