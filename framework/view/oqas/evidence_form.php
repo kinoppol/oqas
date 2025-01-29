@@ -16,7 +16,7 @@ helper('view/alert');
           <div class="mb-3 col-12">
             <div class="form-floating">
               <input type="text" class="form-control" id="floatingInput" placeholder="เอกสาร..."
-                aria-describedby="floatingInputHelp" name="title"
+                aria-describedby="floatingInputHelp" name="subject"
                 value="<?php if(!empty($indicator)) print $indicator['title']; ?>" required />
               <label for="floatingInput">ชื่อหลักฐาน</label>
               <div id="floatingInputHelp" class="form-text">
@@ -27,10 +27,10 @@ helper('view/alert');
 
             <div class="mb-3 col-12">
             <div class="form-floating">
-                <select class="form-control" id="floatingInput" aria-describedby="floatingInputHelp" name="subject"/>
+                <select class="form-control" id="floatingInput" aria-describedby="floatingInputHelp" name="type"/>
                 <option value="text">ข้อความ</option>
                 <option value="link">ลิงก์</option>
-                <option value="pdf">ไฟล์ PDF</option>
+                <option value="pdf">ไฟล์ PDF (Google Drive)</option>
                 </select>
                 <label for="floatingInput">ประเภทหลักฐาน</label>
                 <div id="floatingInputHelp" class="form-text">
@@ -46,7 +46,7 @@ helper('view/alert');
                 value="<?php if(!empty($indicator)) print $indicator['title']; ?>" required />
               <label for="floatingInput">รายละเอียดหลักฐาน</label>
               <div id="floatingInputHelp" class="form-text">
-
+                <input type="hidden" name="ind" value="<?php print $ind; ?>">
               </div>
             </div>
           </div>

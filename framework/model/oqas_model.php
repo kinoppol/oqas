@@ -33,6 +33,11 @@ class oqas_model{
       $result=$this->db->query($sql);
       return $result;
     }
+    function delete_project($where=array()){
+      $sql='delete project where '.arr2and($where);
+      $result=$this->db->query($sql);
+      return $result;
+    }
     
     function get_indicators($data=array()){
        
@@ -90,4 +95,44 @@ class oqas_model{
             return $res;
 
     }
+
+    function delete_indicator($where=array()){
+      $sql='delete indicator where '.arr2and($where);
+      $result=$this->db->query($sql);
+      return $result;
+    }
+    function get_evidence($data=array()){
+       
+      $sql='select * from evidence';
+      if(count($data)){
+        $sql.=' where '.arr2and($data);
+      }
+      //print $sql;
+      $result=$this->db->query($sql);
+
+          $res=array();
+          while($data=$result->fetch_assoc()){
+            $res[]=$data;
+          }
+          return $res;
+      
+  }
+
+
+  function insert_evidence($data=array()){
+      $sql='insert into evidence set '.arr2set($data);
+      //print $sql;
+      $result=$this->db->query($sql);
+      return $this->db->insert_id;
+  }
+  function update_evidence($data=array(),$where=array()){
+    $sql='update evidence set '.arr2set($data).' where '.arr2and($where);
+    $result=$this->db->query($sql);
+    return $result;
+  }
+  function delete_evidence($where=array()){
+    $sql='delete evidence where '.arr2and($where);
+    $result=$this->db->query($sql);
+    return $result;
+  }
 }
