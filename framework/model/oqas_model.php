@@ -97,7 +97,7 @@ class oqas_model{
     }
 
     function delete_indicator($where=array()){
-      $sql='delete indicator where '.arr2and($where);
+      $sql='delete from indicator where '.arr2and($where);
       $result=$this->db->query($sql);
       return $result;
     }
@@ -131,7 +131,8 @@ class oqas_model{
     return $result;
   }
   function delete_evidence($where=array()){
-    $sql='delete evidence where '.arr2and($where);
+    $sql='delete from evidence where '.arr2and($where);
+    //print $sql;
     $result=$this->db->query($sql);
     return $result;
   }

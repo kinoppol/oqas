@@ -8,13 +8,13 @@ foreach($evidence as $e){
     }else if($e['type']=='link'){
         print '<a href="'.$e[detail].'" target="_blank" class="btn btn-primary">'.$e['subject'].'</a>';
     }else if($e['type']=='pdf'){
-        print '<iframe src="'.$e['detail'].'" width="640" height="480"></iframe>';
+        print '<iframe src="'.$e['detail'].'" width="100%" height="600"></iframe>';
     }
-    print "<br>";
+    print '<a href="'.site_url('qa/delete_evidence/ind/'.$ind.'/id/'.$e['id']).'" onclick="return confirm(\'ยืนยันการลบหลักฐาน?\')"><i class="bx bx-trash me-1"></i> ลบ</a>';
 }
 ?> <br>
 <a href="<?php
                       print site_url('qa/evidence_form/ind/'.$ind); ?>"
-                          class="btn btn-primary">
+                          class="btn btn-warning">
                           เพิ่มหลักฐานประกอบ
                       </a>

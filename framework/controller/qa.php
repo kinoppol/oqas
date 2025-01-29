@@ -34,5 +34,10 @@ class qa{
 
         return redirect(site_url('qa/evidence/ind/'.$_POST['ind']));
     }
+    function delete_evidence($param){
+        $oqasModel = model('oqas_model');
+        $result=$oqasModel->delete_evidence(['id'=>$param['id']]);
+        return redirect(site_url('qa/evidence/ind/'.$param['ind']));
+    }
 }
 ?>
