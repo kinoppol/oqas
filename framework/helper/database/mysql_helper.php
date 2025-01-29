@@ -10,7 +10,7 @@ class mysql_helper {
         $this->db = $db_ref;
     }
 
-    function select(...$fields) {
+    function select($fields) {
         $this->sql = 'SELECT ';
         foreach ($fields as $value) {
             $this->sql .= $value.', ';
