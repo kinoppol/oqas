@@ -2,7 +2,7 @@
 class main{
     function index(){
         
-        $content='Hello-PTS';
+        $content='ยินดีต้อนรับเข้าสู่ระบบประเมินออนไลน์ โปรดเลือกตัวชี้วัดเพื่อดำเนินการ';
         helper('sneat/menu');
         $menu=view('_menu/admin_cvm').view('_menu/admin_school').view('_menu/user_menu');
         return view('_template/main',array('content'=>$content,'title'=>'หน้าหลัก','menu'=>$menu));
